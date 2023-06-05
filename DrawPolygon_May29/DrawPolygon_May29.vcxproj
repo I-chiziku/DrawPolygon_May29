@@ -148,14 +148,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="camera.h" />
+    <ClInclude Include="field.h" />
     <ClInclude Include="fpscontrol.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="manager.h" />
     <ClInclude Include="Polygon2D.h" />
     <ClInclude Include="renderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="camera.cpp" />
+    <ClCompile Include="field.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="manager.cpp" />
     <ClCompile Include="Polygon2D.cpp" />
     <ClCompile Include="renderer.cpp" />
   </ItemGroup>

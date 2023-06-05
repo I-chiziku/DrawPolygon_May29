@@ -1,11 +1,9 @@
 #pragma once
-
 #include	<d3d11.h>
 #include	<SimpleMath.h>
 #include "GameObject.h"
 
-class Polygon2D : public GameObject
-{
+class Field : public GameObject {
 
 private:
 

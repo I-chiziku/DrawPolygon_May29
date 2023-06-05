@@ -6,20 +6,13 @@
 #include "Application.h"
 #include "fpscontrol.h"
 #include "renderer.h"
-
-#include "polygon2D.h"
-
-Polygon2D* g_Polygon{};
-
+#include "manager.h"
 
 //-----------------------------------------------------------------------------
 // Constant Values.
 //-----------------------------------------------------------------------------
 const auto ClassName = TEXT("2023 framework ひな型");     //!< ウィンドウクラス名.
 const auto WindowName = TEXT("2023 framework ひな型");    //!< ウィンドウ名.
-
-
-
 
 ///////////////////////////////////////////////////////////////////////////////
 // App class
@@ -172,12 +165,9 @@ void Application::MainLoop()
     // FPS調整クラス
     FPS fpsrate(60);
 
-    // レンダラーの初期化
-    Renderer::Init(this);
+    // ゲームの初期処理
+    Manager::Init(this);
 
-    // ポリゴン初期化
-    g_Polygon = new Polygon2D();
-    g_Polygon->Init();
 
     while(WM_QUIT != msg.message)
     {
@@ -192,21 +182,16 @@ void Application::MainLoop()
             // デルタタイムを計算
             delta_time = fpsrate.CalcDelta();
 
-            Renderer::Begin();
-
-            g_Polygon->Draw();
-
-            Renderer::End();
+            Manager::Update(delta_time);        // ゲーム更新
+            Manager::Draw(delta_time);		    // ゲーム描画
 
             // 規定時間まで時間調整
             fpsrate.Wait();
         }
     }
 
-    delete g_Polygon;
-
-    // レンダラーの終了処理
-    Renderer::Uninit();
+    // ゲームの終了処理
+    Manager::Uninit();
 
 }
 
